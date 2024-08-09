@@ -10,7 +10,7 @@ import ReloadIcon from "./assets/reload.png";
 import TagIcon from "./assets/tag.png";
 import FaChevronDown from "./assets/FaChevronDown.png";
 import { Bar, Doughnut } from "react-chartjs-2";
-import CustomSlider, { ValueLabelComponent } from "./CustomSlider";
+
 
 import {
   Chart as ChartJS,
