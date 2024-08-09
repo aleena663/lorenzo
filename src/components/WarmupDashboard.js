@@ -8,8 +8,7 @@ import EnableIcon from "./assets/enable.png";
 import PauseIcon from "./assets/pause.png";
 import ReloadIcon from "./assets/reload.png";
 import TagIcon from "./assets/tag.png";
-import FaChevronDown from "./assets/FaChevronDown.png";
-import { Bar, Doughnut } from "react-chartjs-2";
+import FaChevronDown from "./assets/FaChevronDown.png"; // Ensure this is used correctly or remove
 
 
 import {
@@ -22,6 +21,7 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
+import { Bar, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -154,7 +154,7 @@ const WarmupEmailsVisuals = () => {
         <div className="mb-2 text-sm">
           <span className="inline-block w-3 h-3 rounded-full bg-green-500 mr-2"></span>
           <span className="text-[12px] font-semibold">
-            Warmup email sents{" "}
+            Warmup email sent{" "}
             <span className="font-semibold text-green-600">
               {sentPercentage}% (67)
             </span>
@@ -227,7 +227,7 @@ const WarmupDashboard = () => {
             Lorenzo Cracco (lorenzo.cracco@tecsavingenergy.org)
           </h2>
           <p className="text-sm text-[#9CA3AF]">
-            Started on Mar23, 2024 | 4 months ago
+            Started on Mar 23, 2024 | 4 months ago
           </p>
         </div>
         <button className="bg-[#684FFF] text-white py-2 px-3 text-[12px] rounded-full flex items-center">
@@ -241,41 +241,47 @@ const WarmupDashboard = () => {
       </div>
 
       <div className="flex mb-4">
-        <button className="bg-[#684FFF] text-white py-1 px-3 rounded text-[12px]">
+        <div className="display-flex py-1 px-1 bg-white-500" style={{borderRadius: "3px", }}>
+        <button className="bg-[#684FFF] text-white py-2 px-3 rounded text-[12px]">
           Warm Up
         </button>
-        <button className="bg-gray-100 text-[#9CA3AF] py-1 px-3 rounded text-[12px]">
-          Email Settings
+        <button
+          className="bg-[#FFF] text-[#9CA3AF] py-2 px-3 rounded text-[12px]"
+          style={{ borderRadius: "3px", opacity: 2 }}
+        >
+          Personal Setting
         </button>
+        </div>
         <div className="flex-grow"></div>
-        
+
         <div className="flex items-center">
           <span className="mr-5 text-[12px] font-semibold text-black">
             Warm Up Setting
           </span>
-          <div className='flex items-center bg-[#F2F0FF] rounded px-1 py-1 '>
-          <button
-            onClick={toggleWeekdaysOnly}
-            className={`${
-              !weekdaysOnly
-               ? "bg-neutral-400 text-[#FFFFFF]"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-            } py-1 px-2 rounded flex items-center text-[12px]`}
-          >
-            <img src={DisableIcon} alt="Disable" className="w-4 h-4 mr-1" />
-            Disable
-          </button>
-          <button
-            onClick={toggleWeekdaysOnly}
-            className={`${
-              weekdaysOnly
-                ? "bg-[#684FFF] text-white"
-                : "bg-[#F2F0FF] text-[#9A9CBC]"
-            } py-2 px-2 rounded flex items-center text-[12px]`}
-          >
-            <img src={EnableIcon} alt="Enable" className="w-4 h-4 mr-1" />
-            Enable
-          </button>
+
+          <div className="flex items-center bg-[#F2F0FF] rounded px-1 py-1">
+            <button
+              onClick={toggleWeekdaysOnly}
+              className={`${
+                !weekdaysOnly
+                  ? "bg-[#FFFFFF] text-[#9A9CBC]"
+                  : "bg-[#F2F0FF] text-[#9A9CBC]"
+              } py-2 px-2 rounded flex items-center text-[12px]`}
+            >
+              <img src={DisableIcon} alt="Disable" className="w-4 h-4 mr-1" />
+              Disable
+            </button>
+            <button
+              onClick={toggleWeekdaysOnly}
+              className={`${
+                weekdaysOnly
+                  ? "bg-[#684FFF] text-white"
+                  : "bg-[#F2F0FF] text-[#9A9CBC]"
+              } py-2 px-2 rounded flex items-center text-[12px]`}
+            >
+              <img src={EnableIcon} alt="Enable" className="w-4 h-4 mr-1" />
+              Enable
+            </button>
           </div>
         </div>
       </div>
@@ -283,7 +289,7 @@ const WarmupDashboard = () => {
       <h3 className="text-lg font-semibold mb-2">Summary for past week</h3>
 
       <div
-        className="grid grid-cols-1 md:grid-cols-2 items-start flex-cols lg:grid-cols-4 gap-5 mb-1"
+        className="grid grid-cols-1 md:grid-cols-2 items-start lg:grid-cols-4 gap-5 mb-1"
         style={{
           width: "1112px",
           height: "222px",
@@ -291,38 +297,30 @@ const WarmupDashboard = () => {
           borderRadius: "20px 0px 0px 0px",
         }}
       >
-        <div>
-          <SummaryCard
-            icon={RecievedIcon}
-            value={134}
-            label="Warmup emails received"
-            color="bg-[#E1DBFF]"
-          />
-        </div>
-        <div>
-          <SummaryCard
-            icon={SpamIcon}
-            value={106}
-            label="Saved from spam"
-            color="bg-[#FFF4DE]"
-          />
-        </div>
-        <div>
-          <SummaryCard
-            icon={SentIcon}
-            value={50}
-            label="Warmup emails sent"
-            color="bg-[#D5F6E8]"
-          />
-        </div>
-        <div>
-          <SummaryCard
-            icon={InboxIcon}
-            value={67}
-            label="Landed in Inbox"
-            color="bg-[#F0E1FF]"
-          />
-        </div>
+        <SummaryCard
+          icon={RecievedIcon}
+          value={134}
+          label="Warmup emails received"
+          color="bg-[#E1DBFF]"
+        />
+        <SummaryCard
+          icon={SpamIcon}
+          value={106}
+          label="Saved from spam"
+          color="bg-[#FFF4DE]"
+        />
+        <SummaryCard
+          icon={SentIcon}
+          value={50}
+          label="Warmup emails sent"
+          color="bg-[#D5F6E8]"
+        />
+        <SummaryCard
+          icon={InboxIcon}
+          value={67}
+          label="Landed in Inbox"
+          color="bg-[#F0E1FF]"
+        />
       </div>
 
       <div>
@@ -391,14 +389,15 @@ const WarmupDashboard = () => {
       <div className="mt-7 flex justify-center items-center">
         <button
           onClick={toggleAdvancedSettings}
-          className="flex items-center text-[#9CA3AF] bg-gray-100 py-1 px-3 rounded-full text-sm"
+          style={{ boxShadow: "1px 10px 25px 0px rgba(3, 2, 41, 0.07)" }}
+          className="flex items-center text-[#9CA3AF] py-1 px-3 rounded-full text-sm"
         >
           <span>{showAdvanced ? "Show less" : "Show advanced Setting"}</span>
           <img
             src={FaChevronDown}
             alt="Chevron Down"
-            className={`ml-1 w-6 h-6 bg-[#F3F4F6] ${
-              showAdvanced ? "rotate-180" : ""
+            className={`ml-1 w-6 h-6 rounded-full bg-[#F3F4F6] ${
+              showAdvanced ? "rotate-90" : ""
             }`}
           />
         </button>
@@ -409,16 +408,16 @@ const WarmupDashboard = () => {
           className="bg-white p-4 mt-4 rounded-lg shadow-lg"
           style={{
             width: "1112px",
-            padding: "20px",
             gap: "20px",
             opacity: "1",
+            borderRadius: "2rem",
           }}
         >
           <h3 className="text-[24px] font-bold mb-2">
             Warmup Advance Settings
           </h3>
           <div className="space-y-4">
-            <div className="flex justify-between  bg-white rounded-lg p-4 shadow-md items-center">
+            <div className="flex justify-between bg-white rounded-lg p-4 shadow-md items-center">
               <div>
                 <p className="font-medium text-black-500">Weekdays only</p>
                 <p className="text-[#6B7280] text-[13px]">
@@ -426,65 +425,65 @@ const WarmupDashboard = () => {
                   pattern
                 </p>
               </div>
-              <div className='flex items-center bg-[#F2F0FF] rounded px-1 py-1 '>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={toggleWeekdaysOnly}
-                  className={`${
-                    !weekdaysOnly
-                      ? "bg-neutral-400 text-[#FFFFFF]"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Disable
-                </button>
-                <button
-                  onClick={toggleWeekdaysOnly}
-                  className={`${
-                    weekdaysOnly
-                      ? "bg-[#684FFF] text-white"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Enable
-                </button>
-              </div>
+              <div className="flex items-center bg-[#F2F0FF] rounded px-1 py-1">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleWeekdaysOnly}
+                    className={`${
+                      !weekdaysOnly
+                        ? "bg-neutral-400 text-[#FFFFFF]"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Disable
+                  </button>
+                  <button
+                    onClick={toggleWeekdaysOnly}
+                    className={`${
+                      weekdaysOnly
+                        ? "bg-[#684FFF] text-white"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Enable
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="flex justify-between  bg-white rounded-lg p-4 shadow-md items-center">
+            <div className="flex justify-between bg-white rounded-lg p-4 shadow-md items-center">
               <div>
                 <p className="font-medium text-black-500">Read emulation</p>
-                <p className="text-[#6B7280]  text-[13px]">
+                <p className="text-[#6B7280] text-[13px]">
                   Spend time and scroll through your warmup email to emulate
                   human-like reading
                 </p>
               </div>
-              <div className='flex items-center bg-[#F2F0FF] rounded px-1 py-1 '>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={toggleReadEmulation}
-                  className={`${
-                    !readEmulation
-                      ? "bg-neutral-400 text-[#FFFFFF]"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Disable
-                </button>
-                <button
-                  onClick={toggleReadEmulation}
-                  className={`${
-                    readEmulation
-                      ? "bg-[#684FFF] text-white"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Enable
-                </button>
-              </div>
+              <div className="flex items-center bg-[#F2F0FF] rounded px-1 py-1">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleReadEmulation}
+                    className={`${
+                      !readEmulation
+                        ? "bg-neutral-400 text-[#FFFFFF]"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Disable
+                  </button>
+                  <button
+                    onClick={toggleReadEmulation}
+                    className={`${
+                      readEmulation
+                        ? "bg-[#684FFF] text-white"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Enable
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="flex justify-between  bg-white rounded-lg p-4 shadow-md items-center">
+            <div className="flex justify-between bg-white rounded-lg p-4 shadow-md items-center">
               <div>
                 <p className="font-medium">Warm custom tracking domain</p>
                 <p className="text-gray-500 text-[13px]">
@@ -492,38 +491,39 @@ const WarmupDashboard = () => {
                   further improve deliverability
                 </p>
               </div>
-              <div className='flex items-center bg-[#F2F0FF] rounded px-1 py-1 '>
-              <div className="flex items-center gap-2">
-
-                <button
-                  onClick={toggleCustomTracking}
-                  className={`${
-                    !customTracking
-                      ? "bg-neutral-400 text-[#FFFFFF]"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Disable
-                </button>
-                <button
-                  onClick={toggleCustomTracking}
-                  className={`${
-                    customTracking
-                      ? "bg-[#684FFF] text-white"
-                      : "bg-[#F2F0FF] text-[#9A9CBC]"
-                  } py-2 px-4 text-[12px] rounded`}
-                >
-                  Enable
-                </button>
-              </div>
+              <div className="flex items-center bg-[#F2F0FF] rounded px-1 py-1">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleCustomTracking}
+                    className={`${
+                      !customTracking
+                        ? "bg-neutral-400 text-[#FFFFFF]"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Disable
+                  </button>
+                  <button
+                    onClick={toggleCustomTracking}
+                    className={`${
+                      customTracking
+                        ? "bg-[#684FFF] text-white"
+                        : "bg-[#F2F0FF] text-[#9A9CBC]"
+                    } py-2 px-4 text-[12px] rounded`}
+                  >
+                    Enable
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 itme-start flex-col  items-start gap-2">
+            <div className="grid grid-cols-3 items-start gap-2">
               <div
-                className="flex flex-col h-[100%]  justify-between   items-stretch bg-white rounded-lg p-4 shadow-md"
+                className="flex flex-col h-[100%] justify-between items-stretch bg-white rounded-lg p-4 shadow-md"
                 style={{ width: "100%" }}
               >
-                <label className="block text-[16px] text-black-500  font-medium mb-1"> Open Rate</label>
+                <label className="block text-[16px] text-black-500 font-medium mb-1">
+                  Open Rate
+                </label>
                 <label className="block text-[#6B7280] text-[12px] font-sm mb-1">
                   How many of your warm up emails to open
                 </label>
@@ -545,13 +545,13 @@ const WarmupDashboard = () => {
                 </div>
               </div>
               <div
-                className="flex flex-col  h-[100%] justify-between   items-stretch bg-white rounded-lg p-4 shadow-md"
+                className="flex flex-col h-[100%] justify-between items-stretch bg-white rounded-lg p-4 shadow-md"
                 style={{ width: "100%" }}
               >
                 <label className="block text-[16px] text-black-500 font-medium mb-1">
                   Spam Protection
                 </label>
-                <label className="block c text-[#6B7280] font-medium  text-[12px] mb-1">
+                <label className="block text-[#6B7280] font-medium text-[12px] mb-1">
                   How many of your warm up emails to save from spam folder
                 </label>
                 <input
@@ -572,14 +572,14 @@ const WarmupDashboard = () => {
                 </div>
               </div>
               <div
-                className="flex flex-col   justify-between h-[100%]   items-stretch bg-white rounded-lg p-4 shadow-md"
+                className="flex flex-col justify-between h-[100%] items-stretch bg-white rounded-lg p-4 shadow-md"
                 style={{ width: "100%" }}
               >
                 <label className="block text-[16px] font-medium mb-1">
                   Mark Important
                 </label>
                 <label className="block text-[12px] text-[#6B7280] font-medium mb-1">
-                  How many of your warm up emails to open
+                  How many of your warm up emails to mark as important
                 </label>
                 <input
                   type="range"
@@ -611,4 +611,3 @@ const WarmupDashboard = () => {
 };
 
 export default WarmupDashboard;
-

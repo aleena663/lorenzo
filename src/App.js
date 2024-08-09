@@ -8,8 +8,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<EmailSettings />} />
-          <Route path="/warmup-dashboard" element={<WarmupDashboard />} />
+          <Route path="/EmailSettings" element={<EmailSettings />} />
+          <Route path="/" element={<WarmupDashboard />} />
         </Routes>
       </div>
     </Router>
