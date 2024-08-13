@@ -22,7 +22,7 @@ import FaChevronDown from "./assets/FaChevronDown.png";
 import UndoIcon from "./assets/undo.png";
 import RedoIcon from "./assets/redo.png";
 import ReplyIcon from "./assets/reply.png";
-
+import { Check } from "lucide-react";
 const EmailSettings = () => {
   const [firstName, setFirstName] = useState("Farhan");
   const [lastName, setLastName] = useState("Tahir");
@@ -93,7 +93,7 @@ const EmailSettings = () => {
             Warm Up
           </button>
           <button className="bg-[#FFF] text-[#9CA3AF] py-2 px-3 rounded text-xs">
-            Personal Setting
+            Email Setting
           </button>
         </div>
         <div className="flex-grow"></div>
@@ -427,7 +427,7 @@ const EmailSettings = () => {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[#242536] mb-1">
               Minimum wait time
             </label>
             <div className="text-neutral-400 mb-2">
@@ -461,7 +461,7 @@ const EmailSettings = () => {
               <img
                 src={ReplyIcon} // Assuming you have this icon
                 alt="Reply"
-                className="absolute left-2 top-1/2  transform -translate-y-1/2 h-5 w-5"
+                className="absolute left-2 mt-1 top-1/2  transform -translate-y-1/2 h-6 w-6"
               />
             </div>
           </div>
@@ -493,7 +493,13 @@ const EmailSettings = () => {
                 checked={useCustomTracking}
                 onChange={(e) => setUseCustomTracking(e.target.checked)}
               />
-              <img src={CheckboxIcon} alt="Checkbox" className="h-4 w-4 bg-[#684FFF] rounded-full" />
+              <CustomCheckbox 
+              checked={useCustomTracking}
+              label=' Link Use custom tracking domain '
+              onChange={(e) => setUseCustomTracking(e.target.checked)}
+
+              />
+              {/* <img src={CheckboxIcon} alt="Checkbox" className="h-4 w-4 bg-[#684FFF] rounded-full" /> */}
               <span className="text-sm text-[#6B7280] ml-2">
                 Link Use custom tracking domain 
               </span>
@@ -537,16 +543,16 @@ const EmailSettings = () => {
         <div className="bg-[#F2F0FF] mb-4 rounded-lg shadow-md ml-3 h-fit my-auto p-2">
           <div className="flex-col w-full flex justify-between gap-4 h-[100%] mb-4">
             <div>
-              <span className="text-neutral-500 text-sm">Record Type</span>
-              <span className="text-gray-700 ml-2 font-semibold">CName</span>
+              <span className="text-neutral-400 text-sm">Record Type</span>
+              <span className="text-[#242536] ml-2 font-semibold">CName</span>
             </div>
             <div>
-              <span className="text-neutral-500 text-sm">Host</span>
-              <span className="text-gray-700 ml-2 font-semibold">inst</span>
+              <span className="text-neutral-400 text-sm">Host</span>
+              <span className="text-[#242536] ml-2 font-semibold">inst</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-neutral-500 text-sm">Value</span>
-              <span className="text-gray-700 font-semibold">
+              <span className="text-neutral-400 text-sm">Value</span>
+              <span className="text-[#242536] font-semibold">
                 prox.itrackly.com
               </span>
               <button onClick={() => handleCopy("prox.itrackly.com")}>
@@ -575,3 +581,26 @@ export default EmailSettings;
 
 
 
+const CustomCheckbox = ({ checked, onChange, label }) => (
+  <label className="flex items-center">
+    <div className="relative">
+      <input 
+        type="checkbox" 
+        className="sr-only" 
+        checked={checked}
+        onChange={onChange}
+      />
+      <div 
+        className={`w-6 h-6 border-2 rounded-full transition-colors duration-200 ease-in-out ${
+          checked 
+            ? 'bg-[#684FFF] border-blue-500' 
+            : 'bg-[#F3F4F6] border-gray-300'
+        }`}
+      ></div>
+      <div className="absolute inset-0 flex items-center justify-center transition-colors duration-200 ease-in-out">
+        <Check size={16} color={checked ? 'white' : '#9CA3AF'} />
+      </div>
+    </div>
+    <span className="ml-2">{label}</span>
+  </label>
+);

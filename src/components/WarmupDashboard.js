@@ -8,7 +8,8 @@ import EnableIcon from "./assets/enable.png";
 import PauseIcon from "./assets/pause.png";
 import ReloadIcon from "./assets/reload.png";
 import TagIcon from "./assets/tag.png";
-import FaChevronDown from "./assets/FaChevronDown.png"; // Ensure this is used correctly or remove
+import FaChevronDown from "./assets/FaChevronDown.png";
+
 
 
 import {
@@ -257,7 +258,7 @@ const WarmupDashboard = () => {
               className="bg-[#FFF] text-[#9CA3AF] py-2 px-3 rounded text-[12px]"
               style={{ borderRadius: "3px", opacity: 2 }}
             >
-              Personal Setting
+              Email Setting
             </button>
           </div>
           <div className="flex-grow"></div>
