@@ -9,7 +9,7 @@ import PauseIcon from "./assets/pause.png";
 import ReloadIcon from "./assets/reload.png";
 import TagIcon from "./assets/tag.png";
 import FaChevronDown from "./assets/FaChevronDown.png"; // Ensure this is used correctly or remove
-import Donoughtchart from "./assets/Donoughtchart.svg";
+
 
 import {
   Chart as ChartJS,
@@ -115,12 +115,13 @@ const doughnutOptions = {
 const SummaryCard = ({ icon, value, label, color }) => {
   return (
     <div
-      className={`p-4 rounded-lg text-[18px] flex flex-col gap-4 items-start ${color}`}
+      className={`p-6 rounded-lg text-[18px] flex flex-col gap-5 items-start ${color}`}
       style={{
         // width: "270px",
         // height: "170px",
         borderRadius: "20px",
         opacity: "1",
+        height: "170px" ,
       }}
     >
       <img src={icon} alt="Icon" className="w-8 h-8 mr-4" />
@@ -266,7 +267,7 @@ const WarmupDashboard = () => {
               Warm Up Setting
             </span>
 
-            <div className="flex items-center bg-[#F2F0FF] rounded px-1 py-1">
+            <div className="flex items-center bg-[#F2F0FF] rounded-full px-1 py-1">
               <button
                 onClick={toggleWeekdaysOnly}
                 className={`${
